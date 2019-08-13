@@ -79,5 +79,5 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Fengxici/Ukulele.git
+  repo: git@github.com:Fengxici/Fengxici.github.io.git
   branch: master

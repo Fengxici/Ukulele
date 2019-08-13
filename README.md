@@ -24,3 +24,4 @@ The project list of Ukulele as below:
   Ukulele-IOS
   Ukulele-WeChatApp
 
+主题地址：https://github.com/raytaylorlin/hexo-theme-raytaylorism.git

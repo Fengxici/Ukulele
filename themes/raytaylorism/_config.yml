@@ -16,9 +16,9 @@ menu:
     category: true
     icon: bookmark
     class: menu-category
-  # 读书
-  - id: reading
-    link: /reading
+  # 致谢
+  - id: thanks
+    link: /thanks
     icon: book
     class: menu-reading
   # 关于
@@ -54,7 +54,7 @@ color:
 archive_yearly: true
 
 # 版权信息
-copyright: © 2016 example.com, All rights reserved.
+copyright: © 2019 fengxici.github.io, All rights reserved.
 
 # Disqus评论shortname，若为空则不启用
 disqus_shortname:

@@ -1,44 +1,53 @@
 {
     "define": {
-	    "readed": "已读",
-        "reading": "在读",
-        "wanted": "想读"
+	    "java": "JAVA",
+        "csharp": "C#",
+        "android": "安卓",
+        "web": "前端"
     },
     "contents": {
-        "readed": [{
-            "title": "众妙之门：网站UI设计之道",
-            "cover": "http://img3.douban.com/lpic/s23139051.jpg",
-            "review": "推荐非UI人士了解UI阅读。",
-            "score": "7",
-            "doubanLink": "http://book.douban.com/subject/20281463/"
+        "java": [{
+            "title": "Spring Cloud",
+            "cover": "https://spring.io/img/homepage/diagram-distributed-systems.svg",
+            "review": "一系列框架的有序集合。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发。",
+            "score": "10",
+            "doubanLink": "https://spring.io/"
         }, {
-            "title": "JavaScript模式",
-            "cover": "http://img5.douban.com/lpic/s11337059.jpg",
-            "review": "书很薄，但内容相当实用。",
-            "score": "8.5",
-            "doubanLink": "http://book.douban.com/subject/11506062/"
-        }, {
-            "title": "JavaScript语言精粹",
-            "cover": "http://img3.douban.com/lpic/s11373174.jpg",
-            "review": "这是一本前端人员的基础书，强烈推荐阅读，而且越早看受益越多！",
-            "score": "9.5",
-            "doubanLink": "http://book.douban.com/subject/11874748/"
+            "title": "Dubbo",
+            "cover": "http://dubbo.apache.org/img/architecture.png",
+            "review": "是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。",
+            "score": "10",
+            "doubanLink": "http://dubbo.apache.org"
         }],
 		
-		"reading": [{
-            "title": "网络游戏核心技术与实战",
-            "cover": "http://img4.douban.com/lpic/s27881888.jpg",
-            "review": "",
-            "score": null,
-            "doubanLink": "http://book.douban.com/subject/25850090/"
+		"csharp": [{
+            "title": "cefsharp",
+            "cover": "http://cefsharp.github.io/images/logo2.png",
+            "review": "CefSharp is the easiest way to embed a full-featured standards-compliant web browser into your C# or VB.NET app.",
+            "score": 10,
+            "doubanLink": "http://cefsharp.github.io/"
         }],
 
-        "wanted": [{
-            "title": "计算机程序的构造和解释",
-            "cover": "http://img4.douban.com/lpic/s1113106.jpg",
-            "review": "",
-            "score": null,
-            "doubanLink": "http://book.douban.com/subject/1148282/"
+        "android": [{
+            "title": "Android",
+            "cover": "https://www.gstatic.cn/devrel-devsite/ve2c68b23f5e29751008d397cc8690e486e2178af7b2d0f25bca3882168f886c9/android/images/lockup.svg?dcb_=0.7742506246060821",
+            "review": "一个开源的，基于Linux的移动设备操作系统，主要使用于移动设备",
+            "score": 10,
+            "doubanLink": "https://developer.android.google.cn/"
+        }],
+
+        "web":[{
+            "title": "Angular",
+            "cover": "https://angular.io/assets/images/logos/angular/angular.svg",
+            "review": "一套框架，多种平台， 移动端 & 桌面端",
+            "score": 10,
+            "doubanLink": "https://angular.io/"
+        },{
+            "title": "Ng Alain",
+            "cover": "https://ng-alain.com/assets/screenshot/basic.png",
+            "review": "一个基于 Antd 中后台前端解决方案，提供更多通用性业务模块，让开发者更加专注于业务。",
+            "score": 10,
+            "doubanLink": "https://ng-alain.com/"
         }]
     }
 }

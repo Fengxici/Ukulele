@@ -6,11 +6,20 @@ categories:
 ---
 欢迎来到 [Ukulele](https://fengxici.github.io/)! 
 
-本项目的创建旨在打造一个企业全栈开发框架，为中小企业降低开发难度。
+本项目的创建旨在打造一个企业级全栈开发框架，为中小企业降低开发难度。
 
-Ukulele是一个乐器，它具有小巧、携带方便，具有活力的声音特质。这正如我们想要打造的企业级全站开发框架一样：小巧，易构建，涵盖绝大数企业开发需求。因此我们将框架命名为 **Ukulele**.
+Ukulele是一个乐器，它小巧、携带方便，声音好听可爱，能够激发节奏潜能。只要它在手中，没有你不会弹的歌。这正如我想要打造的企业级全站开发框架一样：小巧，易构建，对用户友好，涵盖绝大数企业开发需求。因此我将框架命名为 **Ukulele**.
 
-Ukulele由一系列项目构成
+Ukulele由一系列项目构成，概括起来即为
+> 1. 后端采用微服务架构，支持两种主流开发语言：C#和JAVA
+> 2. JAVA微服务支持Spring Cloud和Dubbo两种主流生态
+> 3. 支持两中前端主流行框架Angular和Vue
+> 4. 支持两种移动端主流系统的原生开发：Android和IOS
+> 5. 支持三种桌面主流系统原生开发：Windows、Mac和Linux
+> 6. 支持微信小程序
+
+# 项目清单
+
 ## **1.Spring Cloud 系列**
 <escape>
 <table>
@@ -19,9 +28,9 @@ Ukulele由一系列项目构成
 </thead>
 <tbody>
 <tr><td rowspan="4">ukulel-boot</td><td rowspan="4">spring cloud微服务基础组建</td><td>注册中心(register)</td><td rowspan="4"> <a href="https://github.com/Fengxici/Ukulele-Boot">https://github.com/Fengxici/Ukulele-Boot</a></td></tr>
-<tr><td>注册中心(register)</td></tr>
-<tr><td>注册中心(register)</td></tr>
-<tr><td>注册中心(register)</td></tr>
+<tr><td>监控（monitor)</td></tr>
+<tr><td>熔断（circuit) </td></tr>
+<tr><td>链路（trace）</td></tr>
 <tr><td rowspan="10">ukulele-master</td><td rowspan="10">ukulele公共库项目</td><td>通用组件（ukulele-commom）</td><td rowspan="10"><a href="https://github.com/Fengxici/Ukulele-Master">https://github.com/Fengxici/Ukulele-Master</a></td></tr>
 <tr><td>zookeeper分布式锁集成（ukulele-curator）</td></tr>
 <tr><td>网络库（ukulele-http）</td></tr>
@@ -57,53 +66,57 @@ Ukulele由一系列项目构成
 ## **2.Dubbo系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukelele-Dubbo|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukelele-Dubbo|
 
 
 ## **3.DotNet Core微服务系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukulele-Sharp|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukulele-Sharp|
 
 
 ## **4.前端系列**
 |项目|描述|链接|
 |----|----|---|
 |ukulele-angualr|基于angular框架，以[ng-alain](https://ng-alain.com)为基础|https://github.com/Fengxici/Ukulele-Angular|
-|ukulele-vue|给予vue框架，以[d2admin](https://doc.d2admin.fairyever.com)为基础(建设中)|https://github.com/Fengxici/Ukulele-Vue|
+|ukulele-vue|给予vue框架，以[d2admin](https://doc.d2admin.fairyever.com)为基础(规划中)|https://github.com/Fengxici/Ukulele-Vue|
 
 
 ## **5.安卓系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukulele-Android|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukulele-Android|
 
 
 ## **6.IOS系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukulele-IOS|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukulele-IOS|
 
 
 ## **7.Windows系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukulele-Win|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukulele-Win|
 
 
 ## **8.Linux系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukelele-Linux|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukelele-Linux|
 
 
 ## **9.MAC系列**
 |项目|描述|子项目|链接|
 |----|----|-----|----|
-|（建设中）|（建设中）|（建设中）|https://github.com/Fengxici/Ukelele-Mac|
+|（规划中）|（规划中）|（规划中）|https://github.com/Fengxici/Ukelele-Mac|
 
 
 ## **10.微信小程序系列**
 |项目|描述|链接|
 |----|----|----|
-|（建设中）|（建设中）|https://github.com/Fengxici/Ukulele-WeChatApp|
+|（规划中）|（规划中）|https://github.com/Fengxici/Ukulele-WeChatApp|
+
+------------------
+
+# 奉献  感恩  开放 勇敢 持续进步

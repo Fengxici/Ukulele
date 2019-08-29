@@ -1,5 +1,8 @@
 ---
 title: Hello Ukulele
+tags:
+- 项目介绍
+- 项目清单
 categories:
 - 前言
 - 项目简介

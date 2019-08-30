@@ -12,7 +12,7 @@ categories:
 > BUILD ANYTHING
 
 官网指导书：
-http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle
+https://docs.spring.io/spring-boot/docs/current/reference/html/
 
 本篇及后续文章均基于Spring Boot 2系列，简称Spring Boot，如非特别指定，均代指Spring Boot 2.
 # 目标

@@ -36,9 +36,9 @@ categories:
 > 3 git基本原理，至少会使用图形化git工具，有github、gitlab、gitee等任意一个git网站账号
 
 # 本系列文章开发环境
-> Intellij IDEA 2018.1.5
-> maven 3.5.3
-> JAVA 8+
-> RabbitMQ 3.7.6
-> Git 2.18.0
-> TortoiseGit 2.6.0
+> [Intellij IDEA 2018.1.5+](http://www.jetbrains.com/idea/)
+> [maven 3.5.3+](https://maven.apache.org/)
+> [JAVA 8+](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+> [RabbitMQ 3.7.6+](https://www.rabbitmq.com/)
+> [Git 2.18.0+](https://git-scm.com/)
+> [TortoiseGit 2.6.0+](https://tortoisegit.org/)

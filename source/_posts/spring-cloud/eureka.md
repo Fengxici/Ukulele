@@ -1,5 +1,5 @@
 ---
-title: 第二张 注册中心Eureka
+title: 第二章 注册中心Eureka
 date: 2019-08-30 09:19:00
 tags: 
 - spring cloud
@@ -35,26 +35,20 @@ Spring Cloud的注册中心实现其实存在多种方式，比如 Hashicorp Con
 ## 2 修改pom.xml，引入依赖
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>timing.springcloud</groupId>
     <artifactId>eureka-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>eureka-demo</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
     <packaging>pom</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>10</java.version>
-        <jaxb-version>2.3.0</jaxb-version>
-        <javax.activation-version>1.1.1</javax.activation-version>
-    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
     </parent>
     <dependencyManagement>
         <dependencies>
@@ -65,49 +59,95 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--因为JAXB-API是java ee的一部分，在jdk10中没有在默认的类路径中；-->
-            <!--java ee api在jdk中还是存在的，默认没有加载而已，jdk9中引入了模块的概念，可以使用-->
-            <!--模块命令–add-modules java.xml.bind引入jaxb-api;-->
-            <dependency>
-                <groupId>javax.xml.bind</groupId>
-                <artifactId>jaxb-api</artifactId>
-                <version>${jaxb-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.xml.bind</groupId>
-                <artifactId>jaxb-impl</artifactId>
-                <version>${jaxb-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jaxb</groupId>
-                <artifactId>jaxb-runtime</artifactId>
-                <version>${jaxb-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.activation</groupId>
-                <artifactId>activation</artifactId>
-                <version>${javax.activation-version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-    <repositories>
-        <repository>
-            <id>repo.spring.io-milestones</id>
-            <name>repo.spring.io-milestones</name>
-            <url>https://repo.spring.io/libs-milestone-local</url>
-        </repository>
-        <repository>
-            <id>repo.spring.io-snapshots</id>
-            <name>repo.spring.io-snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot-local</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <profiles>
+        <profile>
+            <id>spring</id>
+            <repositories>
+                <repository>
+                    <id>spring-snapshots</id>
+                    <name>Spring Snapshots</name>
+                    <url>https://repo.spring.io/libs-snapshot-local</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                </repository>
+                <repository>
+                    <id>spring-milestones</id>
+                    <name>Spring Milestones</name>
+                    <url>https://repo.spring.io/libs-milestone-local</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>spring-releases</id>
+                    <name>Spring Releases</name>
+                    <url>https://repo.spring.io/release</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>spring-snapshots</id>
+                    <name>Spring Snapshots</name>
+                    <url>https://repo.spring.io/libs-snapshot-local</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>spring-milestones</id>
+                    <name>Spring Milestones</name>
+                    <url>https://repo.spring.io/libs-milestone-local</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>spring-releases</id>
+                    <name>Spring Releases</name>
+                    <url>https://repo.spring.io/libs-release-local</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+        <profile>
+            <id>java9+</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>javax.activation-api</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
 ```
-有两点需要注意：1.打包类型应为pom；2.如果是Java8，请去除注释后面的依赖。
+有两点需要注意：打包类型应为pom。
 
 至此，父项目创建完毕。
 
@@ -127,8 +167,9 @@ module创建成功，接下来做一点简单的调整
 ## 4 修改eureka-server的pom，引入eureka的服务器端依赖
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>eureka-demo</artifactId>
         <groupId>timing.springcloud</groupId>
@@ -137,42 +178,27 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eureka-server</artifactId>
     <name>eureka-server</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
     <dependencies>
-    <dependency>
-        <groupId>javax.xml.bind</groupId>
-        <artifactId>jaxb-api</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-impl</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.glassfish.jaxb</groupId>
-        <artifactId>jaxb-runtime</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>javax.activation</groupId>
-        <artifactId>activation</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -183,7 +209,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     </build>
 </project>
 ```
-注：如是Java8环境，去除jaxb-*和activation。
 
 引入的依赖包括spring-cloud-starter-netflix-eureka-server和spring-boot-starter-actuator。应为注册中心也是一个Spring Boot项目，所以引入actuator以备后期运维和监控使用。这里的spring-cloud-starter-netflix-eureka-server即是实现注册中心最核心的依赖。
 
@@ -281,8 +306,9 @@ defaultZone: http://root:root@localhost:8080/eureka/
 ## 8 修改eureka-client的pom，引入eureka的客户端依赖
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>eureka-demo</artifactId>
         <groupId>timing.springcloud</groupId>
@@ -291,8 +317,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eureka-client</artifactId>
     <name>eureka-client</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -382,102 +407,111 @@ public class SpringBootWebSecurityConfiguration {
 ``` yml
 # 安全认证的配置
 #spring:
-# security:
-# user:
-# name: root
-# password: root
+#  security:
+#    user:
+#      name: root
+#      password: root
 #eureka:
-# client:
-# #默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
-# register-withEureka: false
-# #表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
-# fetch-registry: false
-# service-url:
-## 对外暴露的地址
-# defaultZone: http://root:root@localhost:8080/eureka/
+#  client:
+#        #默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
+#    register-withEureka: false
+#        #表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
+#    fetch-registry: false
+#    service-url:
+##        对外暴露的地址
+#      defaultZone: http://root:root@localhost:8080/eureka/
+
 # ============================以上为单机部署配置========================================
+
 #=============================以下为集群部署配置========================================
+
 spring:
-    application:
-        name: eureka-server
+  application:
+    name: eureka-server
 # 安全认证的配置
-security:
+  security:
     user:
-        name: root
-        password: root
-profiles:
+      name: root
+      password: root
+  profiles:
     active: peer1
+
 ---
 server:
-    port: 8000
+  port: 8000
 spring:
-    profiles: peer1
+  profiles: peer1
 eureka:
-    instance:
-        hostname: peer1
-        prefer-ip-address: true
-        instance-id: ${eureka.instance.hostname}:${server.port}
-    client:
-#默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
-        register-withEureka: false
-#表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
-        fetch-registry: false
-        service-url:
-#对外暴露的地址
-            defaultZone: http://root:root@localhost:8001/eureka/,http://root:root@hosthost:8002/eureka/
+  instance:
+    hostname: peer1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+        #默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
+    register-with-eureka: false
+        #表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
+    fetch-registry: false
+    service-url:
+        #对外暴露的地址
+      defaultZone: http://root:root@localhost:8001/eureka/,http://root:root@hosthost:8002/eureka/
+
+
 ---
 server:
-    port: 8001
+  port: 8001
 spring:
-    profiles: peer2
+  profiles: peer2
+   # 安全认证的配置
 eureka:
-    instance:
-        hostname: peer2
-        prefer-ip-address: true
-        instance-id: ${eureka.instance.hostname}:${server.port}
-    client:
-#默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
-        register-withEureka: false
-#表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
-        fetch-registry: false
-        service-url:
-#对外暴露的地址
-            defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8002/eureka/
+  instance:
+    hostname: peer2
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+        #默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
+    register-with-eureka: false
+        #表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
+    fetch-registry: false
+    service-url:
+        #对外暴露的地址
+      defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8002/eureka/
+
 ---
 server:
-    port: 8002
+  port: 8002
 spring:
-    profiles: peer3
+  profiles: peer3
 eureka:
-    instance:
-        hostname: peer3
-        prefer-ip-address: true
-        instance-id: ${eureka.instance.hostname}:${server.port}
-    client:
-#默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
-        register-withEureka: false
-#表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
-        fetch-registry: false
-        service-url:
-#对外暴露的地址
-            defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8001/eureka/
+  instance:
+    hostname: peer3
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+        #默认情况下，应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
+    register-with-eureka: false
+#        表示不去检索其他的Eureka Server获取注册信息，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
+    fetch-registry: false
+    service-url:
+        #对外暴露的地址
+      defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8001/eureka/
 ```
 将单机版的配置注释掉，新增3个profile，分别使用8001，8002，8003三个端口。Eureka服务端的高可用实际上就是将自己作为服务向其他注册中心注册自己，这样就可以形成一组互相注册的服务注册中心，以实现服务清单的互相同步，达到高可用的效果。
 
 修改**eureka-client**的application.yml文件：
 ``` yml
 spring:
-    application:
-        name: eureka-client
+  application:
+    name: eureka-client
+
 server:
-    port: 8083
+  port: 8081
 eureka:
-    client:
-        service-url:
-        # 单机
-            # defaultZone: http://root:root@localhost:8000/eureka/
-        #集群
-            defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8001/eureka/,http://root:root@localhost:8002/eureka/
+  client:
+    service-url:
+#    单机
+#      defaultZone: http://root:root@localhost:8000/eureka/
+#集群
+      defaultZone: http://root:root@localhost:8000/eureka/,http://root:root@localhost:8001/eureka/,http://root:root@localhost:8002/eureka/
 ```
 ## 11 集群效果观察
 

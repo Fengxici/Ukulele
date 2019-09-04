@@ -22,7 +22,7 @@ categories:
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
-    <version>2.0.0.RELEASE</version>
+    <version>2.1.2.RELEASE</version>
 </dependency>
 ```
 ## 3 启动类，同第六章。

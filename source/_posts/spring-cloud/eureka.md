@@ -210,7 +210,7 @@ module创建成功，接下来做一点简单的调整
 </project>
 ```
 
-引入的依赖包括spring-cloud-starter-netflix-eureka-server和spring-boot-starter-actuator。应为注册中心也是一个Spring Boot项目，所以引入actuator以备后期运维和监控使用。这里的spring-cloud-starter-netflix-eureka-server即是实现注册中心最核心的依赖。
+引入的依赖包括spring-cloud-starter-netflix-eureka-server和spring-boot-starter-actuator。因为注册中心也是一个Spring Boot项目，所以引入actuator以备后期运维和监控使用。这里的spring-cloud-starter-netflix-eureka-server即是实现注册中心最核心的依赖。
 
 ## 5 添加启动类，实现注册中心
 ``` java
@@ -230,7 +230,7 @@ public class EurekaServerApplication {
 
 reimport一下**eureka-server的pom**，待出现EurekaServerApplication的运行配置即可点击运行或者调试按钮将注册中心跑起来了。
 
-此时一个注册中心就创建成功了。可以打开浏览器（http://localhost:8080/eureka)查看效果
+此时一个注册中心就创建成功了。可以打开浏览器（http://localhost:8080/eureka) 查看效果
 
 细心的您肯定看到了控制台一直在报错。这是因为在默认设置下，该服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为。resources文件夹里添加application.yml文件，并设置如下内容：
 ``` yml
@@ -294,7 +294,7 @@ defaultZone: http://root:root@localhost:8080/eureka/
 
 注册中心创建好了。接下来我们动手创建客户端吧。
 
-## 7 创建Eurekak客户端项目eureka-client
+## 7 创建Eureka客户端项目eureka-client
 与第3步类似，创建一个maven module。命名为eureka-client。同样，我们也需要对项目结构做一下调整。
 父项目eureka-demo的pom.xml里的modules节点变成了这样：
 ``` xml

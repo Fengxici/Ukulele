@@ -402,10 +402,10 @@ public class HelloControllerTest {
 #公共部分
 spring:
     application:
-    name: spring-boot-demo(可自行指定)
+		name: spring-boot-demo(可自行指定)
 #指定使用哪一个配置
-profiles:
-    active: dev
+	profiles:
+		active: dev
 # 开发环境 使用8080端口，打开actuator全部端点和shutdown端点
 ---
 server:

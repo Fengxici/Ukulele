@@ -546,7 +546,7 @@ spring:
         password: root
   profiles:
     include: shared
-    
+
 eureka:
   instance:
     hostname: localhost
@@ -1257,12 +1257,20 @@ public interface MyFeignClient {
 
 可以看到如下三个界面，注册中心启动完成
 
+![eureka-8000](/images/spring-cloud/tutorial/eureka-8000.jpg)
+
+![eureka-8001](/images/spring-cloud/tutorial/eureka-8001.png)
+
+![eureka-8002](/images/spring-cloud/tutorial/eureka-8002.png)
+
 ## 配置中心
 打开命令行窗口，运行
 >java -jar .\tutorial-config-native-1.0-SNAPSHOT.jar
 
 打开浏览器访问
 · http://localhost:8888/config/dev
+
+![config](/images/spring-cloud/tutorial/config.png)
 
 注册中心启动完成
 
@@ -1273,6 +1281,7 @@ public interface MyFeignClient {
 打开浏览器访问
 - http://localhost:13000/#/wallboard
 
+![monitor](/images/spring-cloud/tutorial/monitor.jpg)
 
 监控服务启动完成
 
@@ -1280,7 +1289,12 @@ public interface MyFeignClient {
 打开命令行窗口，运行
 >java -jar .\tutorial-sleuth-zipkin-1.0-SNAPSHOT.jar
 
+打开浏览器访问
+
 链路跟踪服务启动完成
+- http://localhost:7000
+
+![zipkin](/images/spring-cloud/tutorial/zipkin.png)
 
 ## Turbine
 打开命令行窗口，运行
@@ -1289,6 +1303,8 @@ public interface MyFeignClient {
 打开浏览器访问
 - http://localhost:11000/hystrix
 
+![turbine](/images/spring-cloud/tutorial/turbine.png)
+
 熔断监控服务启动完成
 
 ## 网关服务
@@ -1296,14 +1312,31 @@ public interface MyFeignClient {
 >java -jar .\tutorial-gateway-1.0-SNAPSHOT.jar
 
 ## 提供者服务
-打开命令行窗口，运行
+这里我们启动两个提供者服务，打开命令行窗口，运行
 >java -jar .\tutorial-provider-1.0-SNAPSHOT.jar
+>java -jar .\tutorial-provider-1.0-SNAPSHOT.jar -server.port=15000
 
 ## 消费者服务
-打开命令行窗口，运行
+这里我们打开两个消费者服务，打开命令行窗口，运行
 >java -jar .\tutorial-consumer-1.0-SNAPSHOT.jar
+>java -jar .\tutorial-consumer-1.0-SNAPSHOT.jar -server.port=16000
 
 此时刷新三个注册中心界面，将会看到如下界面
 
-7给服务注册进来了
+![eureka-registed](/images/spring-cloud/tutorial/eureka-registed.png)
+
+9个服务注册进来了，其中两个消费者服务，分别监听14000和16000端口，两个提供者服务，分别监听9000和15000端口
+
+![monitor-registed](/images/spring-cloud/tutorial/monitor-registed.png)
+
+7个菱形，其中消费者服务(CONSUMER-SERVICE)和提供者服务(PROVIDER-SERVICE)都各有两个实例(instance)
+
+至此，整个项目就运行起来了。
+
+# 结束也是开始
+
+一个相对完整的Spring Cloud项目已经在我们手上诞生了！
+
+然而这并没有结束，仅仅是一个开始。后续还会有非常多的知识在等待着大家，我期待与各位读者共同去探寻Spring Cloud微服务生态的奥秘，增长自己的见闻，完善自身技术。
+
 

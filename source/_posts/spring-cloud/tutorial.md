@@ -544,7 +544,9 @@ spring:
       user:
         name: root
         password: root
-
+  profiles:
+    include: shared
+    
 eureka:
   instance:
     hostname: localhost
@@ -742,7 +744,7 @@ eureka:
 zuul:
   routes:
     provider:
-      path: /**
+      path: /api/**
       serviceId: consumer-service
 
 management:

@@ -533,8 +533,10 @@ public class MonitorApplication {
         </plugins>
     </build>
 </project>
-```  
+```
+
 ## 配置
+
 ``` yml
 QUERY_PORT: 7000
 spring:
@@ -566,6 +568,7 @@ management:
      health:
           show-details: ALWAYS
 ```
+
 ## 启动类
 ``` java
 package timing.springcloud.sleuth.zipkin;
@@ -824,6 +827,7 @@ public class GateWayApplication {
     </build>
 </project>
 ```
+
 ## 配置
 ``` yml
 server:

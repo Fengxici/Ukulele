@@ -1,5 +1,5 @@
 ---
-title: 概念
+title: 第一章 相关概念
 date: 2019-09-016 14:04:15
 tags:
 - Maven
@@ -98,12 +98,12 @@ Maven 提供了大量的原型插件来创建工程，包括工程结构和 pom.
     </exclusions >
 </dependency >
 ```
-根元素projet下的一个或者多个dependency 元素需包含在一个dependencies标签下，以声明一个或者多个项目依赖。每个依赖可以包含的元素有:
-> 1. groupld、artifactld 和version:依赖的基本坐标，对于任何个依赖来说，基本坐标是最重要的，Maven 根据坐标才能找到需要的依赖。
-> 2. type:依赖的类型，对应于项目坐标定义的packaging。大部分情况下，该元素不必声明，其默认值为jar
-> 3. scope;依赖的范围
-> 4. optional:标记依赖是否可选
-> 5. exclusions:用来排除传递性依赖
+根元素projet下的一个或者多个dependency 元素需包含在一个**dependencies**标签下，以声明一个或者多个项目依赖。每个依赖可以包含的元素有:
+> 1. groupld、artifactld和version：依赖的基本坐标，对于任何个依赖来说，基本坐标是最重要的，Maven 根据坐标才能找到需要的依赖。
+> 2. type：依赖的类型，对应于项目坐标定义的packaging。大部分情况下，该元素不必声明，其默认值为jar
+> 3. scope：依赖的范围
+> 4. optional：标记依赖是否可选
+> 5. exclusions：用来排除传递性依赖
 
 大部分依赖声明只包含基本坐标，然而在一些特殊情况下，其他元素至关重要.
 

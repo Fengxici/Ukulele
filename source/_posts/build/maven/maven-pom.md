@@ -1,6 +1,6 @@
 ---
-title: POM 标签大全详解
-date: 2019-09-06 17:04:15
+title: 第二章 POM标签大全详解
+date: 2019-09-12 17:04:15
 tags:
 - Maven
 - pom
@@ -23,9 +23,9 @@ categories:
         <!-- 父项目的pom.xml文件的相对路径。相对路径允许你选择一个不同的路径。默认值是../pom.xml。Maven首先在构建当前项目的地方寻找父项目的pom，其次在文件系统的这个位置（relativePath位置），然后在本地仓库，最后在远程仓库寻找父项目的pom。 -->
         <relativePath />
     </parent>
-    <!--声明项目描述符遵循哪一个POM模型版本。模型本身的版本很少改变，虽然如此，但它仍然是必不可少的，这是为了当Maven引入了新的特性或者其他模型变更的时候，确保稳定性。 -->
+    <!--声明项目描述符遵循哪一个POM模型版本。虽然模型本身的版本很少改变，但它仍然是必不可少的，这是为了当Maven引入了新的特性或者其他模型变更的时候，确保稳定性。 -->
     <modelVersion>4.0.0</modelVersion>
-    <!--项目的全球唯一标识符，通常使用全限定的包名区分该项目和其他项目。并且构建时生成的路径也是由此生成， 如com.mycompany.app生成的相对路径为：/com/mycompany/app -->
+    <!--项目的全球唯一标识符，通常使用全限定的包名区分该项目和其他项目。并且构建时生成的路径也是由此生成，如com.mycompany.app生成的相对路径为：/com/mycompany/app -->
     <groupId>***</groupId>
     <!-- 构件的标识符，它和group ID一起唯一标识一个构件。换句话说，你不能有两个不同的项目拥有同样的artifact ID和groupID；在某个特定的group ID下，artifact ID也必须是唯一的。构件是项目产生的或使用的一个东西，Maven为项目产生的构件包括：JARs，源 码，二进制发布和WARs等。 -->
     <artifactId>***</artifactId>
@@ -87,11 +87,11 @@ categories:
             <!--邮件的名称 -->
             <name>Demo</name>
             <!--发送邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
-            <post>banseon@126.com</post>
+            <post>***@**.com</post>
             <!--订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
-            <subscribe>banseon@126.com</subscribe>
+            <subscribe>****@***.com</subscribe>
             <!--取消订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
-            <unsubscribe>banseon@126.com</unsubscribe>
+            <unsubscribe>*****@***.com</unsubscribe>
             <!--你可以浏览邮件信息的URL -->
             <archive>http://fengxici.github.io</archive>
         </mailingList>
@@ -520,9 +520,9 @@ categories:
                 <checksumPolicy />
             </snapshots>
             <!--远程仓库唯一标识符。可以用来匹配在settings.xml文件里配置的远程仓库 -->
-            <id>banseon-repository-proxy</id>
+            <id>repository-proxy</id>
             <!--远程仓库名称 -->
-            <name>banseon-repository-proxy</name>
+            <name>repository-proxy</name>
             <!--远程仓库URL，按protocol://hostname/path形式 -->
             <url>http://xx.xx.xx.xx:xx/repository/</url>
             <!-- 用于定位和排序构件的仓库布局类型-可以是default（默认）或者legacy（遗留）。Maven 2为其仓库提供了一个默认的布局；然而，Maven 1.x有一种不同的布局。我们可以使用该元素指定布局是default（默认）还是legacy（遗留）。 -->

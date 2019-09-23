@@ -1,6 +1,6 @@
 ---
 title: 第一章 相关概念
-date: 2019-09-016 14:04:15
+date: 2019-09-11 14:04:15
 tags:
 - Maven
 - 概念
@@ -107,6 +107,8 @@ Maven 提供了大量的原型插件来创建工程，包括工程结构和 pom.
 
 大部分依赖声明只包含基本坐标，然而在一些特殊情况下，其他元素至关重要.
 
+PS: 开发过程中我们可以通过：https://search.maven.org/ 来查询我们所需依赖的版本。
+
 ## 依赖的范围
 依赖范围就是用来控制依赖与三种classpath ( 编译classpath、测试classpath、运行classpath)的关系。maven有以下几种依赖范围:
 > compile（默认的）
@@ -153,7 +155,7 @@ Maven 提供了大量的原型插件来创建工程，包括工程结构和 pom.
 |test|test|-|-|test|
 |provide|provide|-|provide|provide|
 |runtime|runtime|-|-|runtime|
-上表所示，最左边一行表示第一直接依赖范围，最上面一行表示第二直接依赖范围，中间的交叉单元格则表示传递性依赖范围
+上表所示，最左边一列表示第一直接依赖范围，最上面一行表示第二直接依赖范围，中间的交叉单元格则表示传递性依赖范围
 
 ## 依赖的调解
 
@@ -251,10 +253,12 @@ Maven 依赖调解( Dependency Mediation)的
 分析当前项目的依赖
 
 结果中重要的是两个部分。、
-1. 首先是Used undeclared dependencies,意指项目中使用到的，但是没有显式声明的依赖
+1. 首先是Used undeclared dependencies,意指项目中使用到的，但是没有显式声明的依赖。
+
 显式声明任何项目中直接用到的依赖。
-2. 还有一个重要的部分是Unused deelared dependencies.意指项目中未使用的，但显式声明的依赖，这里有spring-core 和spring-beans.需要注意的是，对于这样一类依赖，我们不应该简单地直接删除其声明，而是应该仔细分析。
+
+2. 还有一个重要的部分是Unused declared dependencies.意指项目中未使用的，但显式声明的依赖，这里有spring-core 和spring-beans.需要注意的是，对于这样一类依赖，我们不应该简单地直接删除其声明，而是应该仔细分析。
+
 由于dependency:analyze只会分析编译主代码和测试代码需要用到的依赖，一些执行测试和运行时需要的依赖它就发现不了
 
-IDEA中有对应的插件可以方便查看
 

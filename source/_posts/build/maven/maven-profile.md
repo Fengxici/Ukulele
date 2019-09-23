@@ -1,6 +1,6 @@
 ---
-title: Maven 构建配置文件
-date: 2019-09-06 17:04:15
+title: 第三章 Maven构建配置文件
+date: 2019-09-13 17:04:15
 tags:
 - Maven
 - profile
@@ -54,7 +54,7 @@ profile 可以让我们定义一系列的配置信息，然后指定其激活条
 ```
 注意：构建配置文件采用的是 profiles 节点。
 
-说明：上面新建了三个 profiles，其中 <id> 区分了不同的 profiles 执行不同的任务；通过命令行参数输入指定的id来指定哪个profile生效。
+说明：上面新建了三个 profiles，其中 &lt;id&gt; 区分了不同的 profiles 执行不同的任务；通过命令行参数输入指定的id来指定哪个profile生效。
 
 执行命令：
 > mvn test -Ptest

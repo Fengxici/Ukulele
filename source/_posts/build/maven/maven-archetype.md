@@ -1,6 +1,6 @@
 ---
-title: Maven Archetype
-date: 2019-09-06 17:04:15
+title: 第七章 Maven Archetype
+date: 2019-09-17 17:04:15
 tags:
 - Maven
 - Archetype

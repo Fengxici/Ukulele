@@ -72,6 +72,9 @@ Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独�
 
 **注册中心必须启动，其他所有服务都会注册到注册中心**
 
+![注册中心登陆界面](/images/ukulele/spring-cloud/register.png)
+![注册中心面板](/images/ukulele/spring-cloud/register2.png)
+
 ### 监控
 端口 **5050** 用户名及密码 **root/root** 可在配置文件resources/application.yml中进行修改。**若注册中心的端口发生变更，此处的配置也必须要进行对应的修改**。访问地址为：http://ip:port
 
@@ -83,8 +86,9 @@ Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独�
 > - 在monitor目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar monitor-1.0-SNAPSHOT.jar** 即可启动
 
-**监控服务可选，在资源紧张的情况下可以不启动，资源缓解时再启动**
-
+**监控服务可选，如果您的硬件资源紧张可以选择不启动，不影响项目运行**
+![监控登陆界面](/images/ukulele/spring-cloud/monitor.png)
+![监控面板](/images/ukulele/spring-cloud/monitor2.png)
 ### 熔断
 端口 **6060** 用户名及密码 **root/root** 可在配置文件resources/application.yml中进行修改。**若注册中心的端口发生变更，此处的配置也必须要进行对应的修改**。访问地址为：http://ip:port/hystrix 注意末尾的**hystrix**
 
@@ -96,8 +100,8 @@ Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独�
 > - 在monitor目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar circuit-1.0-SNAPSHOT.jar** 即可启动
 
-**熔断服务可选，在资源紧张的情况下可以不启动，资源缓解时再启动**
-
+**熔断服务可选，如果您的硬件资源紧张可以选择不启动，不影响项目运行**
+![熔断面板](/images/ukulele/spring-cloud/circuit.jpg)
 ### 链路
 端口 **7070** 用户名及密码 **root/root** 可在配置文件resources/application.yml中进行修改。**若注册中心的端口发生变更，此处的配置也必须要进行对应的修改**。访问地址为：http://ip:port
 
@@ -109,8 +113,12 @@ Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独�
 > - 在monitor目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar trace-1.0-SNAPSHOT.jar** 即可启动
 
-**链路服务可选，在资源紧张的情况下可以不启动，资源缓解时再启动**
+**链路服务可选，如果您的硬件资源紧张可以选择不启动，但需要将其他服务里的链路相关配置关掉**
+![链路面板](/images/ukulele/spring-cloud/trace.png)
 
+至此，ukulele基础组建已经启动完毕。如果您启动了所有服务，回看注册中心和监控会有如下效果
+![础组建注册成功后注册中心基面板](/images/ukulele/spring-cloud/register3.jpg)
+![基础组建完成后监控面板](/images/ukulele/spring-cloud/monitor3.png)
 ## ukulele-master
 此项目经spring boot常用的一些组建进行了二次封装，以便于组织中的成员使用，甚至可以达到编码规范的作用。
 
@@ -156,6 +164,10 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-Auth目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar Ukulele-Auth-1.0-SNAPSHOT.jar** 即可启动
 
+访问：http://ip:port/auth 您将看到登陆界面
+
+![权限服务登陆界面](/images/ukulele/spring-cloud/auth.jpg)
+
 ### ukulele-portal
 系统配置。端口 **10101**
 
@@ -167,6 +179,8 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-Portal目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar ukulele-portal-1.0-SNAPSHOT.jar** 即可启动
 
+访问 http://ip:port/swagger-ui.html 您将看到接口清单界面
+![门户服务接口清单界面](/images/ukulele/spring-cloud/portal-swagger.png)
 ### ukulele-syslog
 用户操作日志。端口 **20202**
 
@@ -189,6 +203,9 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-User目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar Ukulele-User-1.0-SNAPSHOT.jar** 即可启动
 
+访问 http://ip:port/swagger-ui.html 您将看到接口清单界面
+![用户服务接口清单界面](/images/ukulele/spring-cloud/user-swagger.png)
+
 ### ukulele-gateway
 系统用户服务。端口 **10000**
 
@@ -200,7 +217,20 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-Gateway目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar Ukulele-Gateway-1.0-SNAPSHOT.jar** 即可启动
 
-至此所有项目启动完成。
+访问 http://ip:port/swagger-ui.html 您将看到汇总其他服务的接口清单界面
+![用户服务接口清单界面](/images/ukulele/spring-cloud/gateway-swagger.png)
+
+至此所有项目启动完成。此时在回看注册中心和监控界面，将是如下效果
+![所有服务注册中心界面](/images/ukulele/spring-cloud/register4.png)
+![所有服务监控界面](/images/ukulele/spring-cloud/monitor4.png)
+
+ukulele的angular版前端界面如下
+![angular版登陆界面](/images/ukulele/spring-cloud/angular-login.png)
+![angular版管理界面](/images/ukulele/spring-cloud/angular-manage.png)
+
+本博客也会有相关文章对前端界面进行详细介绍，欢迎关注。
+
+在此也感谢优秀的[ng-alain](https://ng-alain.com/zh)项目。
 
 # 开发
 各项目以maven方式导入开发工具。若您不了解maven建议您先去官网学习，或者在本博客maven章节中快速浏览。如果您不了解Spring Cloud，同样建议您先去官网学习，当然，本博客已有相关文章可供快速实践。

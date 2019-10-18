@@ -57,5 +57,11 @@ categories:
 
 可使用ngnix等容器进行部署。
 
-
+![部门管理界面](/images/ukulele/angular/dept.png)
+![字典管理界面](/images/ukulele/angular/dict.png)
+![图标管理界面](/images/ukulele/angular/icon.png)
+![日志查看界面](/images/ukulele/angular/log.png)
+![菜单管理界面](/images/ukulele/angular/menu.png)
+![角色管理界面](/images/ukulele/angular/role.png)
+![用户管理界面](/images/ukulele/angular/user.png)
 

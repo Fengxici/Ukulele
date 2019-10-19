@@ -31,7 +31,7 @@ Ukulele由一系列项目构成，概括起来即为
 <tr><td> 项目</td><td>描述</td><td>子项目</td><td>链接</td></tr>
 </thead>
 <tbody>
-<tr><td rowspan="4">ukulel-boot</td><td rowspan="4">spring cloud微服务基础组建</td><td>注册中心(register)</td><td rowspan="4"> <a href="https://github.com/Fengxici/Ukulele-Boot">https://github.com/Fengxici/Ukulele-Boot</a></td></tr>
+<tr><td rowspan="4">ukulel-boot</td><td rowspan="4">spring cloud微服务基础组件</td><td>注册中心(register)</td><td rowspan="4"> <a href="https://github.com/Fengxici/Ukulele-Boot">https://github.com/Fengxici/Ukulele-Boot</a></td></tr>
 <tr><td>监控（monitor)</td></tr>
 <tr><td>熔断（circuit) </td></tr>
 <tr><td>链路（trace）</td></tr>

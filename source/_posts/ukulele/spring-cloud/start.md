@@ -19,7 +19,7 @@ Ukulele全栈开发框架所规划的服务端皆采用微服务架构。
 <tr><td> 项目</td><td>描述</td><td>子项目</td><td>链接</td></tr>
 </thead>
 <tbody>
-<tr><td rowspan="4">ukulel-boot</td><td rowspan="4">spring cloud微服务基础组建</td><td>注册中心(register)</td><td rowspan="4"> <a href="https://github.com/Fengxici/Ukulele-Boot">https://github.com/Fengxici/Ukulele-Boot</a></td></tr>
+<tr><td rowspan="4">ukulel-boot</td><td rowspan="4">spring cloud微服务基础组件</td><td>注册中心(register)</td><td rowspan="4"> <a href="https://github.com/Fengxici/Ukulele-Boot">https://github.com/Fengxici/Ukulele-Boot</a></td></tr>
 <tr><td>监控（monitor)</td></tr>
 <tr><td>熔断（circuit) </td></tr>
 <tr><td>链路（trace）</td></tr>
@@ -134,7 +134,7 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > 项目根目录执行 mvn package
 
 ## ukulele-facade
-如上节所述，Ukulele系统服务包含四个服务，服务之间相互调用更多接口汇总在该项目中(其实是所有接口)。每个服务均包含Spring Cloud系的Feign接口和Dubbo系的接口(后期将会调整)。
+如上节所述，Ukulele系统服务包含四个服务，服务之间相互调用的接口汇总在该项目中(其实是所有接口)。每个服务均包含Spring Cloud系的Feign接口和Dubbo系的接口(后期将会调整)。
 
 个人认为在实际的开发中，每个服务由一组单独的人员维护，其他无关人员不能直接接触服务相关代码，只能通过接口的方式调用。那么其实每个服务的facade和data应该是在同一个项目中的，Ukulele之所以将四个服务的data和facade拆分开各自放在一个项目中是因为:1.节省项目数量；2.data的引用场景更多(服务之间、安卓端)；
 

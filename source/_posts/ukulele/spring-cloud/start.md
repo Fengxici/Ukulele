@@ -192,6 +192,9 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-Syslog目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar Ukulele-Syslog-1.0-SNAPSHOT.jar** 即可启动
 
+访问 http://ip:port/swagger-ui.html 您将看到接口清单界面
+![系统日志服务接口清单界面](/images/ukulele/spring-cloud/syslog-swagger.jpg)
+
 ### ukulele-user
 系统用户服务。端口 **30303**
 

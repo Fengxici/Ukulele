@@ -12,6 +12,8 @@ categories:
 1. 安装[node](https://nodejs.org)
 2. 安装[yarn](https://yarn.bootcss.com)
 
+注意：要添加环境变量
+
 ## 获取代码
 
 代码位置：https://github.com/Fengxici/Ukulele-Angular

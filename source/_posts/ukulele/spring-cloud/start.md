@@ -56,7 +56,7 @@ Ukulele全栈开发框架所规划的服务端皆采用微服务架构。
 
 # 项目介绍
 ## ukulele-boot
-Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独的项目中。一来在一个组织中，这些公共服务部署之后很少变动的，业务开发人员不必关心他们的内部细节；二来避免了将不必要的服务放在同一个项目下，减少整个项目的构建时间。
+Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独的项目中。一来在一个组织中，这些公共服务部署之后很少变动的，业务开发人员不必关心他们的内部细节；二来避免了将不必要的服务放在同一个项目下，减少整个项目的构建时间。[有点单一职责的意思]
 
 如上列表所示，这些基础服务包含：注册中心，链路，监控及熔断。这些都是微服务的基础设施。
 
@@ -125,27 +125,27 @@ Ukulele将Spring Cloud微服务中几乎不会变动的服务放在一个单独�
 此项目中各个模块的功能将会在后续章节中介绍。
 
 安装
-> 项目根目录执行 mvn package
+> 项目根目录执行 mvn install
 
 ## ukulele-data
 Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-service)、系统日志服务(syslog-service)和用户服务(user-service)。客户端（浏览器、移动设备、桌面设备等）调用服务接口，或者服务之间相互调用接口会传输相关数据，此项目即是提供统一数据格式的项目。
 
 安装
-> 项目根目录执行 mvn package
+> 项目根目录执行 mvn install
 
 ## ukulele-facade
-如上节所述，Ukulele系统服务包含四个服务，服务之间相互调用的接口汇总在该项目中(其实是所有接口)。每个服务均包含Spring Cloud系的Feign接口和Dubbo系的接口(后期将会调整)。
+如上节所述，Ukulele系统服务包含四个服务，服务之间相互调用的接口汇总在该项目中(实际是所有接口)。每个服务均包含Spring Cloud系的Feign接口和Dubbo系的接口(后期将会调整)。
 
 个人认为在实际的开发中，每个服务由一组单独的人员维护，其他无关人员不能直接接触服务相关代码，只能通过接口的方式调用。那么其实每个服务的facade和data应该是在同一个项目中的，Ukulele之所以将四个服务的data和facade拆分开各自放在一个项目中是因为:1.节省项目数量；2.data的引用场景更多(服务之间、安卓端)；
 
-以上都是废话，我想怎么组织就怎么组织，你也可以。
+以上都是废话，我想怎么组织就怎么组织，你也可以（没有标准，自己觉得合适、方便即可）。
 
 安装
-> 项目根目录执行 mvn package
+> 项目根目录执行 mvn install
 
 ## 中间件
 ### 数据库
-数据库文件位于ukulele-cloud根目录下**database/ukulele.sql**。四个服务单独建库。
+数据库文件位于ukulele-cloud根目录下**database/ukulele.sql**。这里采用的是四个服务单独建库。
 ### redis
 默认配置
 ### rabbitmq
@@ -220,6 +220,10 @@ Ukulele的系统服务包括权限服务(auth-service)、门户服务(portal-ser
 > - 在Ukulele-Gateway目录下执行**mvn package**将项目打包
 > - 进入target目录，执行 **java -jar Ukulele-Gateway-1.0-SNAPSHOT.jar** 即可启动
 
+**gateway服务启动前需先启动auth服务，其他无先后顺序要求**。因网关中采用的是serviceId来路由服务的，注册中心需要一点点时间来发现服务，所以建议gateway服务最后启动，利用gateway启动的时间差，等它好之后可以立即使用了。
+
+至此所有项目启动完成。
+
 访问 http://ip:port/swagger-ui.html 您将看到汇总其他服务的接口清单界面
 ![用户服务接口清单界面](/images/ukulele/spring-cloud/gateway-swagger.png)
 
@@ -238,8 +242,8 @@ ukulele的angular版前端界面如下
 # 开发
 各项目以maven方式导入开发工具。若您不了解maven建议您先去官网学习，或者在本博客maven章节中快速浏览。如果您不了解Spring Cloud，同样建议您先去官网学习，当然，本博客已有相关文章可供快速实践。
 
-ukulele-master、ukulele-data、ukulele-facade三个项目如果有变更，请在各自项目根路径下运行**mvn install**安装至本地仓库。如此，ukulele-cloud项目才能引用到。
+ukulele-master、ukulele-data、ukulele-facade三个库项目如果有变更，请在各自项目根路径下运行**mvn install**安装至本地仓库。如此，ukulele-cloud项目才能引用到。
 
-如您要开发新服务，请参考portal、user或者syslog。
+如您要开发新服务，请参考portal、user或者syslog（俗称依样画葫芦）。
 
 # 奉献  感恩  开放 勇敢 持续进步
